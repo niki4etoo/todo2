@@ -11,5 +11,24 @@ import cn from 'classnames'
 import { motion } from 'framer-motion'
 
 export const TodoItem = (props: { todo: Todo }) => {
-  return <div>Todo Item</div>
+  const { todo } = props
+
+  return (
+    <motion.li
+      layout
+      className={cn(
+        'p-5 rounded-xl bg-zinc-900',
+        todo.status === 'completed' && 'bg-opacity-50 text-zinc-500',
+      )}
+      >
+        <motion.span
+          layout
+          style={{
+            textDecoration: todo.status === 'completed' ? 'line-through' : 'none',
+          }}
+        >
+          {todo.text}
+        </motion.span>
+      </motion.li>
+  )
 }
