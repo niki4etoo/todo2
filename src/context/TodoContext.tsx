@@ -16,14 +16,11 @@ export interface Todo {
   status: 'undone' | 'completed'
 }
 
-
-
-
 export const TodoContext = createContext<TodoContextProps | undefined>(undefined, )
 
 export const TodoProvider = (props: { children: React.ReactNode }) => {
   
-  const [todos, setTodos ] = useState<Todo[]>([])
+  const [todos, setTodos ] = useLocalStorage<Todo[]>('Todos', [])
 
   // ::: ADD METHOD :::
   const addTodo = (text: string) => {
